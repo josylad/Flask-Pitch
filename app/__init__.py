@@ -37,5 +37,8 @@ def create_app(config_class=Config):
     from app.posts.views import posts
     from app.main.views import main 
     
-    
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+
     return app
