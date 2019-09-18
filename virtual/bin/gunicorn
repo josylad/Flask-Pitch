@@ -1,5 +1,4 @@
-#!/home/josylad/Documents/moringa-core/Python/Flask/Pitch-Project/virtual/bin/python3.6
-
+#!/home/josylad/Documents/moringa-core/Python/Flask/Pitch-Project/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
