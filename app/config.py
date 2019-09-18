@@ -1,9 +1,11 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://josylad:p@localhost/pitchy'
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
