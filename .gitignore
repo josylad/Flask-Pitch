@@ -97,7 +97,7 @@ venv.bak/
 .idea/
 virt/
 .virt/
-
+virtual/
 # vscode
 .vscode/
 
