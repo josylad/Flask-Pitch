@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        {% if title %}
+        <title> {{title}} - PITCHRANKR  </title>
+        {% else %}
+        <title>PITCHRANKR</title>
+        {% endif%}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+         <!-- Font Awesome -->
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+         <!-- Bootstrap core CSS -->
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+         <!-- Material Design Bootstrap -->
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">
+         <!-- JQuery -->
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+         <!-- Bootstrap tooltips -->
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+         <!-- Bootstrap core JavaScript -->
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+         <!-- MDB core JavaScript -->
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/js/mdb.min.js"></script>
+
+
+    </head>
+
+    <body>
+            {% block navbar %}
+
+            {% include 'navbar.html' %}
+    
+            {% endblock %}
+
+                    {% block jumbo%}
+                    {% endblock %}
+        <main role="main" class="container mt-2 pt-2">
+            <div class="row">
+                <div class="col-md-9">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    
+                        {% if messages%}
+
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{category}}">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+
+                        {% endif %}
+
+                    {% endwith %}
+
+                {% block content %}
+                
+                {% endblock content %}
+                </div>
+                <div class="col-md-3">
+                <div class="content-section">
+                    <h3>Pitch Categories</h3>
+                    <p class='text-muted'>Filter based on Categories.
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-light"><a href="/post/Product%20Pitch">Product Pitch</a> </li>
+                        <li class="list-group-item list-group-item-light"><a href="/post/Interview%20Pitch">Interview Pitch</a> </li>
+                        <li class="list-group-item list-group-item-light"><a href="/post/Sales">Sales Pitch</a> </li>
+                        <li class="list-group-item list-group-item-light"><a href="/post/Business%20Pitch">Business Pitch</a> </li>
+                    </ul>
+                    </p>
+                </div>
+                </div>
+            </div>
+        </main>
+      <!-- Footer -->
+<footer class="page-footer font-small blue-gradient mt-4 pt-4">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright.
+          <a href="https://github.com/josylad"> Joseph Adediji</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+    </body>
+</html>

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block jumbo%}
+<div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+  <div class="text-white text-center py-5 px-4">
+      <div>
+      <h2 class="card-title h1-responsive mt-4 font-bold"><strong>Welcome to PITCHRANKR</strong></h2>
+      <h4 class="mb-5 text-white">The Home of One Minute Pitch!</h4>
+      <p></p>
+      <!-- <a class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> View project</a> -->
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content%} 
+<h2 class=" font-bold">Newest Pitches</h2>
+
+    {% for post in posts.items %}
+
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image) }}" alt="{{ post.author.username }} profile photo">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                
+                <small class="text-muted mr-2">{{ post.posted_date.strftime('%Y-%m-%d') }}</small> 
+
+                <small>Posted in: <a class="mr-2" href="{{ url_for('posts.category_post', category=post.category) }}">{{ post.category }}</a></small>
+
+              </div>
+              <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+              <p class="article-content">{{ post.content | truncate(100) }}</p>
+              <small><a class="article-readmore" href="{{ url_for('posts.post', post_id=post.id) }}">read more...</a></small>
+            </div>
+            <p class="article-footer"><a class="ratings" href="{{ url_for('posts.new_comment', post_id=post.id) }}"> Leave a comment</a></p>
+    </article>
+    {% endfor %}
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if posts.page == page_num %}
+      <a class="btn btn-sm btn-info mb-2 mt-2" href="{{ url_for('main.home', page=page_num) }}"> {{page_num}} </a>
+        {% else %}
+        <a class="btn btn-sm btn-outline-info mb-2 mt-2" href="{{ url_for('main.home', page=page_num) }}"> {{page_num}} </a>
+        {% endif %}
+
+      {% else %}
+        ...
+      {% endif %}
+
+    {% endfor %}
+
+{% endblock content %}
+       
