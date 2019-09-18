@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content%} 
-    <h2 class="mb-4 mt-2"> {{ posts.total }} Pitches by {{user.username}} </h2>
+    <h2 class="mb-4 mt-5 pt-4"> {{ posts.total }} Pitches by {{user.username}} </h2>
 
     {% for post in posts.items %}
 
