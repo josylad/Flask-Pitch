@@ -12,13 +12,13 @@
 
                 {% if post.author == current_user%}
                 <div>
-                    <a class="btn btn-secondary btn-sm mt-2 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Edit</a>
+                    <a class="btn btn-secondary btn-sm mt-2 mb-2" href="{{ url_for('posts.update_post', post_id=post.id) }}">Edit</a>
                     <button type="button" class="btn btn-danger btn-sm m-1 mb-1"  data-toggle="modal" data-target="#deleteModal">Delete</button>
                 </div>
 
                 {% endif %}
               </div>
-              <h2 class="article-title">{{ post.title }}</h2>
+              <h2 class="article-title mt-2">{{ post.title }}</h2>
               <p class="article-content">{{ post.content }}</p>
             </div>
     </article>
