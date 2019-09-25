@@ -3,7 +3,7 @@
 {% block content%} 
 
     <article class="media content-section mt-5 pt-2">
-      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image) }}" alt="{{ post.author.username }} profile photo">
+      <img class="rounded-circle article-img" src="https://source.unsplash.com/125x125/?profile,photo" alt="{{ post.author.username }} profile photo">
             <div class="media-body">
               <div class="article-metadata">
                 <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
